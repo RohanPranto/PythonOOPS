@@ -44,11 +44,11 @@ __________________________
 
 ## D. Strings
 
-24. Reverse a string using `[::-1]`.  
-25. Check for palindrome.  
-26. Count vowels and consonants.  
-27. Convert string to uppercase without `upper()`.  
-28. Remove whitespaces from a string.  
+24. Reverse a string using `[::-1]`.  ✅
+25. Check for palindrome.   ✅
+26. Count vowels and consonants.  ✅
+27. Convert string to uppercase without `upper()`.   ✅
+28. Remove whitespaces from a string.   ✅
 29. Check if two strings are anagrams.  
 30. Remove duplicates from a string.  
 31. Capitalize first letter of each word manually.  
