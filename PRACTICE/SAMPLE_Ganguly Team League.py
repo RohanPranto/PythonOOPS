@@ -1,57 +1,60 @@
 class Team:
-    def __init__(self, owner: str, value: float, id: int, name: str):
-        self.id = id
+    def __init__(self,owner,value,id,name):
+        self.id= id
         self.name = name
         self.owner = owner
-        self.value = value
+        self.value=value
 
 class League:
-    def __init__(self, leagueName: str, teamList: list):
-        self.leagueName = leagueName
+    def __init__(self,leagueName,teamList):
+        self.leagueName= leagueName
         self.teamList = teamList
 
     def findMaximumTeamById(self):
-        if not self.teamList:
+        if self.teamList is None:
             return None
-        max_team = self.teamList[0]
-        max_id = self.teamList[0].id
-        for team in self.teamList:
-            if team.id > max_id:
-                max_id = team.id
-                max_team = team
-        return max_team
+        else:
+            max=self.teamList[0]
+            for i in self.teamList:
+                if max.id< i.id:
+                    max=i
+            return max
+
+
 
     def sortTeamById(self):
-        if not self.teamList:
+        if self.teamList is None:
             return None
-        return sorted(self.teamList, key=lambda team: team.id)
+        else:
+            return sorted(self.teamList, key=lambda x:x.id)
 
-if __name__ == "__main__":
-    n = int(input())
-    teams = []
-    for _ in range(n):
-        owner = input()
-        value = float(input())
-        team_id = int(input())
-        name = input()
-        team = Team(owner, value, team_id, name)
-        teams.append(team)
 
-    league_name = "MyLeague"
-    league = League(league_name, teams)
 
-    max_id_team = league.findMaximumTeamById()
-    if max_id_team:
-        print(max_id_team.owner)
-        print(max_id_team.value)
-        print(max_id_team.id)
-        print(max_id_team.name)
-    else:
+n=int(input())
+team=[]
+for i in range(n):
+    owner=input()
+    value=float(input())
+    id=int(input())
+    name=input()
+    t=Team(owner,value,id,name)
+    team.append(t)
+
+    s="My League"
+    l=League(s, team)
+
+    ans2= l.findMaximumTeamById()
+    if ans2 is None:
         print("No Data Found")
-
-    sorted_teams = league.sortTeamById()
-    if sorted_teams:
-        for team in sorted_teams:
-            print(team.id)
     else:
-        print("No Data Found")
+        print(ans2.owner)
+        print(ans2.value)
+        print(ans2.id)
+        print(ans2.name)
+
+    ans1=l.sortTeamById()
+    if ans1 is None:
+        print("No data")
+    else:
+        for i in ans1:
+            print(i.id)
