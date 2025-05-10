@@ -4,6 +4,6 @@
         "plaintext": false,
         "markdown": true,
         "scminput": false,
-        "python": true
+        "python": false
     }
 }

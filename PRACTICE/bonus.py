@@ -1,42 +1,31 @@
-# Input number of employees
-num_employees = int(input())
-employees = []
+num_employees =int(input())
+emp_data=[]
 
-# Reading employee data
-for _ in range(num_employees):
-    emp = {}
-    emp['name'] = input().strip()
-    emp['designation'] = input().strip()
-    emp['salary'] = int(input())
-    emp['overtime'] = {}
-    emp['status'] = False
+for i in range(num_employees):
+    name=input().strip()
+    designation = input().strip()
+    salary= int(input())
+    month_count=int(input())
+    overtime = {}
+    
+    for n in range(month_count):
+        month=input().strip()
+        hours=int(input())
+        overtime[month]=hours
+    emp_data.append([name,designation,salary,overtime])
+    
+threshold=int(input())
+rate=int(input())
+total_bonus=0
 
-    month_count = int(input())
-    for _ in range(month_count):
-        month = input().strip()
-        hours = int(input())
-        emp['overtime'][month] = hours
+for emp in emp_data:
+    total_hours= sum(emp[3].values())
+    emp.append(total_hours >= threshold)
 
-    employees.append(emp)
+    if total_hours>=threshold:
+        total_bonus+=total_hours*rate
+    
+for i in emp_data:
+    print(i[0], i[4])
+print (total_bonus)
 
-# Input threshold and rate per hour
-threshold = int(input())
-rate_per_hour = int(input())
-
-# Check eligibility and calculate total bonus
-total_bonus = 0
-for emp in employees:
-    total_hours = 0
-    for hours in emp['overtime'].values():
-        total_hours += hours
-
-    if total_hours >= threshold:
-        emp['status'] = True
-        total_bonus += total_hours * rate_per_hour
-
-# Print employee name and status
-for emp in employees:
-    print(emp['name'], emp['status'])
-
-# Print total bonus
-print(total_bonus)
