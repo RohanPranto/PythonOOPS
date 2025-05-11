@@ -29,9 +29,14 @@ filter=[]
 for ids in details:
     if ids[4].lower()==search_match.lower():
         filter.append(ids[0])
+
+
     
 
 #sort in desc
-filter.sort(reverse=True)
-for x in filter:
-    print(x)
+if filter:
+    filter.sort(reverse=True)
+    for x in filter:
+        print(x)
+else:
+    print("Not a single player")
