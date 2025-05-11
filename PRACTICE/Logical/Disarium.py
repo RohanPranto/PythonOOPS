@@ -1,5 +1,16 @@
-# A number is called a Disarium number if the sum of its digits powered with their respective positions is equal to the number itself.
+num = int(input("Enter a number : "))
+num_str = str(num)
+digits = []
+for d in num_str:
+    digits.append(int(d))
 
-# Example:
-# 135 → 1¹ + 3² + 5³ = 1 + 9 + 125 = 135 → ✅ Disarium
+length = len(digits)
 
+total = 0
+for i in range(length):
+    total += digits[i] ** (i + 1) 
+
+if total == num:
+    print(num, "is a Disarium number.")
+else:
+    print(num, "is not a Disarium number.")
